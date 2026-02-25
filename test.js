@@ -1,6 +1,6 @@
 // Tests using the polyfill — mirrors test/quantum-const.js in the spec repo.
 "use strict";
-const { entangle } = require("./polyfill");
+const { entangle } = require("./index");
 
 async function run() {
   function assert(condition, message) {

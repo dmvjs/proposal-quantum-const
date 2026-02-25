@@ -1,10 +1,33 @@
 {
-  "name": "proposal-quantum-const",
+  "name": "quantum-entangle",
   "version": "0.1.0",
-  "description": "TC39 proposal: quantum entangled const declarations",
-  "main": "polyfill.js",
+  "description": "Entangled value pairs: deferred, complementary, cryptographically random. Polyfill for the proposal-quantum-const TC39 proposal.",
+  "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "exports": {
+    "import": "./index.mjs",
+    "require": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "index.mjs",
+    "index.d.ts"
+  ],
   "scripts": {
     "test": "node test.js"
   },
-  "license": "MIT"
+  "keywords": [
+    "quantum",
+    "entanglement",
+    "promise",
+    "random",
+    "tc39",
+    "proposal"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmvjs/proposal-quantum-const"
+  }
 }
