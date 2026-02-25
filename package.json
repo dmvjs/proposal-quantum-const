@@ -1,0 +1,10 @@
+{
+  "name": "proposal-quantum-const",
+  "version": "0.1.0",
+  "description": "TC39 proposal: quantum entangled const declarations",
+  "main": "polyfill.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "license": "MIT"
+}
