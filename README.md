@@ -101,10 +101,27 @@ console.log(leader); // "node-a is leader" or "node-b is leader"
 
 ## Why Syntax?
 
-The equivalent userland code is `const [a, b] = Quantum.entangle()`. The syntax form provides two things that the API form cannot:
+The equivalent userland code is `const [a, b] = entangle()`. The critical difference is **structural integrity of the pair**.
 
-1. **Const enforcement on both bindings** — the compiler can statically guarantee neither `a` nor `b` is reassigned, without needing runtime checks or Proxy wrappers.
-2. **Lexical pairing** — the two bindings are visually and structurally coupled at the declaration site. It is impossible to accidentally pass the same reference to both sides, or to declare one without the other.
+With the function form, the pair can be silently broken:
+
+```js
+const [a] = entangle(); // b is discarded — entanglement is lost, no error
+const [a, a] = entangle(); // a shadows itself — both sides observe the same binding
+store.set("key", entangle()[0]); // one side stored, other side unreachable
+```
+
+None of these mistakes are catchable at parse time. The complement simply vanishes.
+
+The syntax form makes the pair a single atomic declaration. Both bindings must be named, must be distinct, and must appear together. The pairing is enforced by the grammar, not by convention:
+
+```js
+const[a];       // SyntaxError — pairs only
+const[a, a];    // SyntaxError — duplicate names
+const[a, b];    // valid — both sides present, both const, structurally coupled
+```
+
+This is the same reason destructuring syntax exists alongside array indexing: not because `arr[0]` is impossible, but because the structure of the declaration communicates intent and enables static guarantees the runtime alone cannot provide.
 
 ## Early Error
 
