@@ -18,7 +18,7 @@ const pair = await b; // always 1 - spin
 
 ## Motivation
 
-This pattern emerged from writing JavaScript interfaces for quantum circuit simulators, where coordinating complementary measurement outcomes across async boundaries is a recurring problem. It is worth noting that this proposal models the *observable behaviour* of entangled pairs in classical JavaScript — it does not implement quantum computing.
+This proposal models the *observable behaviour* of entangled pairs in classical JavaScript — it does not implement quantum computing. The naming reflects a natural correspondence with quantum entanglement: two values, indeterminate until observed, always complementary on collapse.
 
 The underlying need is a pair of values that are:
 
